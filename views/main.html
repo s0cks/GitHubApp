@@ -1,0 +1,18 @@
+<div ng-if="error" class="alert alert-danger">{{ error }}</div>
+<div class="menu">
+    <div class="menu-profile">
+
+    </div>
+
+    <div class="menu-buttons">
+        <ul>
+            <li>
+                <a ui-sref=".me"><span class="glyphicon glyphicon-home"></span>Me</a>
+            </li>
+            <li>
+                <a ui-sref=".settings"><span class="glyphicon glyphicon-cog"></span>Settings</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div ui-view></div>
