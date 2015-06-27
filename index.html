@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html data-ng-app="githubApp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>GitHub App</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="css/gh.css"/>
+    </head>
+
+    <body>
+        <div class="container-fluid" data-ui-view></div>
+
+        <script src="lib/angular.min.js"></script>
+        <script src="lib/angular-ui-route.min.js"></script>
+        <script src="lib/angular-route.min.js"></script>
+        <script src="lib/angular-cookies.min.js"></script>
+        <script src="lib/jquery-2.1.4.min.js"></script>
+        <script src="lib/bootstrap.min.js"></script>
+        <script src="js/github.js"></script>
+        <script>
+            $(document).ready(function() {
+                var ngui = require("nw.gui");
+                var nwin = ngui.Window.get();
+                nwin.show();
+                nwin.maximize();
+            });
+        </script>
+    </body>
+</html>

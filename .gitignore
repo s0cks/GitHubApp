@@ -1,0 +1,16 @@
+*
+/*/
+
+# Except These
+!/gruntfile.js
+!/index.html
+!/.gitignore
+!/package.json
+!/LICENSE.md
+!/README.md
+!/css/
+!/fonts/
+!/img/
+!/js/
+!/lib/
+!/views/
