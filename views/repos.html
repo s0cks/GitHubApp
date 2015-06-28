@@ -1,0 +1,39 @@
+<ul class="list-group">
+    <li data-ng-repeat="repo in repos track by $index" class="list-group-item">
+        <div class="repo-card">
+            <h1>{{ repo.name }}</h1><br/>
+            <h2>{{ repo.description }}</h2><br/>
+            <div class="repo-card-buttons">
+                <div class="repo-card-buttons-button">
+                    <button class="btn btn-sm btn-with-count" data-ng-click="star()">
+                        <span class="glyphicon glyphicon-star"></span>
+                        Star
+                    </button>
+                    <a class="star-count" ui-sref="repos.{{ repo.name.toLowerCase() }}.stars">
+                        {{ repo.stargazers_count }}
+                    </a>
+                </div>
+
+                <div class="repo-card-buttons-button">
+                    <button class="btn btn-sm btn-with-count" data-ng-click="fork()">
+                        <span class="glyphicon glyphicon-adjust"></span>
+                        Fork
+                    </button>
+                    <a class="star-count" ui-sref="repos.{{ repo.name.toLowerCase() }}.forks">
+                        {{ repo.forks_count }}
+                    </a>
+                </div>
+
+                <div class="repo-card-buttons-button">
+                    <button class="btn btn-sm btn-with-count" data-ng-click="watch()">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        Unwatch
+                    </button>
+                    <a class="star-count" ui-sref="repos.{{ self.name.toLowerCase() }}.watchers">
+                        {{ repo.watchers_count }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

@@ -1,5 +1,5 @@
 <div ng-if="error" class="alert alert-danger">{{ error }}</div>
-<nav class="menu menu-left" role="navigation">
+<nav class="menu menu-left"role="navigation">
     <div class="profile-userpic">
         <img data-ng-src="{{ self.avatar_url }}" alt=""/>
     </div>
@@ -12,13 +12,10 @@
     <div class="profile-usermenu">
         <ul class="nav">
             <li>
-                <a ui-sref="home.me"><i class="glyphicon glyphicon-user"></i> Me</a>
+                <a ui-sref="gists.me"><i class="glyphicon glyphicon-user"></i> Me</a>
             </li>
             <li>
-                <a ui-sref="gists">Gists</a>
-            </li>
-            <li>
-                <a ui-sref="home.repos"><i class="glyphicon glyphicon-floppy-disk"></i> Repositories</a>
+                <a ui-sref="gists.starred"><i class="glyphicon glyphicon-star"></i> Starred</a>
             </li>
             <li>
                 <a ui-sref="home.settings"><i class="glyphicon glyphicon-cog"></i> Settings</a>

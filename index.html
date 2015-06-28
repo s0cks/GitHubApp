@@ -5,12 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>GitHub App</title>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="css/gh.css"/>
     </head>
 
-    <body>
-        <div class="container-fluid" data-ui-view></div>
+    <body class="menu-push">
+        <div id="root" data-ui-view></div>
 
         <script src="lib/angular.min.js"></script>
         <script src="lib/angular-ui-route.min.js"></script>
@@ -20,12 +19,10 @@
         <script src="lib/bootstrap.min.js"></script>
         <script src="js/github.js"></script>
         <script>
+            /*
             $(document).ready(function() {
-                var ngui = require("nw.gui");
-                var nwin = ngui.Window.get();
-                nwin.show();
-                nwin.maximize();
-            });
+                require("nw.gui").Window.get().maximize();
+            });*/
         </script>
     </body>
 </html>

@@ -18,6 +18,16 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
     }).state("home.settings", {
         url: "/settings",
         templateUrl: "./views/settings.html"
+    }).state("home.repos", {
+        url: "/repos",
+        templateUrl: "./views/repos.html"
+    }).state("gists", {
+        url: "/gists",
+        templateUrl: "./views/main/gists.html",
+        controller: "gistsController"
+    }).state("gists.me", {
+        url: "/gists/me",
+        templateUrl: "./views/gists/me.html"
     });
 }]);
 
@@ -55,11 +65,57 @@ app.factory("authService", ["$http", "$cookieStore", "$rootScope", function($htt
     return service;
 }]);
 
+app.factory("gistService", ["$http", function($http){
+    var service = {};
+
+    service.mine = function(cb){
+        $http.get(apiURL + "/gists").success(function(resp){
+            cb(resp, null);
+        }).error(function(err){
+            cb(null, err);
+        });
+    };
+
+    service.starred = function(cb){
+        $http.get(apiURL + "/gists/starred").success(function(resp){
+            cb(resp, null);
+        }).error(function(err){
+            cb(null, err);
+        });
+    };
+
+    service.public = function(cb){
+        $http.get(apiURL + "/gists/public").success(function(resp){
+            cb(resp, null);
+        }).error(function(err){
+            cb(null, err);
+        });
+    };
+
+    service.get = function(id, cb){
+        $http.get(apiURL + "/gists/" + id).success(function(resp){
+            cb(resp, null);
+        }).error(function(err){
+            cb(null, err);
+        });
+    };
+
+    return service;
+}]);
+
 app.factory("ghService", ["$http", function($http){
     var service = {};
 
     service.self = function(cb){
         $http.get(apiURL + "/user").success(function(resp){
+            cb(resp, null);
+        }).error(function(err){
+            cb(null, err);
+        });
+    };
+
+    service.repos = function(cb){
+        $http.get(apiURL + "/user/repos").success(function(resp){
             cb(resp, null);
         }).error(function(err){
             cb(null, err);
@@ -92,6 +148,41 @@ app.controller("mainController", ["$scope", "ghService", function($scope, $gh){
             $scope.error = "Can't login: " + JSON.stringify(err);
         }
     });
+    $gh.repos(function(resp, err){
+        if(!err){
+            $scope.repos = resp;
+        } else{
+            $scope.error = "Cant resolve repos: " + JSON.stringify(err);
+        }
+    });
+
+    $scope.toggleSidebar = function(){
+        $("body").toggleClass("menu-push-toright");
+        $(".menu").toggleClass("menu-open");
+        $("#toggle").toggleClass("active");
+    };
+}]);
+
+app.controller("gistsController", ["$scope", "ghService", "gistService", function($scope, $gh, $gist){
+    $gh.self(function(resp, err){
+        if(!err){
+            $scope.self = resp;
+        } else{
+            $scope.error = err;
+        }
+    });
+    $gist.mine(function(resp, err){
+        if(!err){
+            $scope.mine = resp;
+        } else{
+            $scope.error = err;
+        }
+    });
+    $scope.toggleSidebar = function(){
+        $("body").toggleClass("menu-push-toright");
+        $(".menu").toggleClass("menu-open");
+        $("#toggle").toggleClass("active");
+    };
 }]);
 
 app.run(["$rootScope", "$location", "$cookieStore", "$http", function($root, $loc, $cookie, $http){
@@ -105,5 +196,16 @@ app.run(["$rootScope", "$location", "$cookieStore", "$http", function($root, $lo
         if($loc.path() !== "/login" && !$root.globals.currUsr){
             $loc.path("/login");
         }
+
+        /*
+        * Need to rewrite this for effect
+
+
+        var toggle = $("#toggle");
+        if(toggle.hasClass("active")){
+            $("body").toggleClass("menu-push-toright");
+            $(".menu").toggleClass("menu-open");
+            toggle.toggleClass("active");
+        }*/
     });
 }]);

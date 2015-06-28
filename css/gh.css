@@ -1,0 +1,209 @@
+body{
+    margin: 0;
+}
+
+.menu{
+    background: #333;
+    width: 240px;
+    height: 100%;
+    top: 0;
+    z-index: 1000;
+    position: fixed;
+}
+
+.menu-left{
+    left: -240px;
+}
+
+.menu-left.menu-open{
+    left: 0;
+}
+
+.menu-push{
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+}
+
+.menu-push-toright{
+    left: 240px;
+}
+
+.menu, .menu-push{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle{
+    margin: 25px;
+}
+
+.nav-toggle span, .nav-toggle span:before, .nav-toggle span:after{
+    cursor: pointer;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: #333;
+    position: absolute;
+    display: block;
+    content: '';
+}
+
+.nav-toggle span:before{
+    top: -10px;
+}
+
+.nav-toggle span:after{
+    bottom: -10px;
+}
+
+.nav-toggle span, .nav-toggle span:before, .nav-toggle span:after{
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+
+.nav-toggle.active span{
+    background-color: transparent;
+}
+
+.nav-toggle.active span:before, .nav-toggle.active span:after{
+    top: 0;
+}
+
+.nav-toggle.active span:before{
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.nav-toggle.active span:after{
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.profile-userpic img{
+    display: block;
+    float: none;
+    margin: 50px auto 10px;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.profile-usertitle{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usertitle-name{
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usermenu{
+    margin-top: 30px;
+}
+
+.profile-usermenu ul li{
+    border-bottom: 1px solid #F0F4F7;
+}
+
+.profile-usermenu ul li:last-child{
+    border-bottom: none;
+}
+
+.profile-usermenu ul li a{
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.profile-usermenu ul li a i{
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.repo-card{
+    position: relative;
+    width: 100%;
+    height: 100px;
+}
+
+.repo-card h1{
+    display: inline;
+    font-size: 32px;
+}
+
+.repo-card h2{
+    display: inline;
+    font-size: 12px;
+}
+
+.repo-card.repo-card-data{
+    position: absolute;
+    bottom: 0;
+    float: right;
+}
+
+.repo-card-data p{
+    font-size: 12px;
+    margin: 5px;
+    float: right;
+    bottom: 0;
+}
+
+.repo-card-buttons{
+    position: absolute;
+    display: block;
+    float: left;
+}
+
+.repo-card-buttons-button{
+    position: relative;
+    display: block;
+    float: left;
+    height: 15px;
+}
+
+.star-count{
+    float: left;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #333;
+    height: 30px;
+    vertical-align: middle;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    border-left: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.star-count,
+.star-count:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-with-count{
+    float: left;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
